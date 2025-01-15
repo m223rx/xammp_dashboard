@@ -195,3 +195,15 @@ main {
   font-weight: bold;
   transition: color 0.3s ease;
 }
+
+.file-view-container{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.file-view-container>h2{
+  color: #fff;
+  font-size: 1.7rem;
+}

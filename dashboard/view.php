@@ -1,13 +1,26 @@
 <?php
-$currentDir = isset($_GET['dir']) ? $_GET['dir'] : './';
+if (isset($_GET['file'])) {
+    $filePath = realpath(urldecode($_GET['file']));
 
-$currentDir = realpath($currentDir);
-if ($currentDir === false || strpos($currentDir, realpath('./')) !== 0) {
-    echo "<p>Invalid directory path.</p>";
+    if ($filePath === false || strpos($filePath, realpath('./')) !== 0) {
+        echo "<p>Invalid file path.</p>";
+        exit;
+    }
+
+    // Check if the file exists
+    if (!file_exists($filePath)) {
+        echo "<p>The file does not exist.</p>";
+        exit;
+    }
+
+    // Get the file information
+    $fileName = basename($filePath);
+    $fileType = mime_content_type($filePath);
+    $fileIcon = getIcon($filePath);
+} else {
+    echo "<p>No file specified.</p>";
     exit;
 }
-
-$dirsAndFiles = array_diff(scandir($currentDir), array('..', '.'));
 
 function getIcon($path)
 {
@@ -21,6 +34,8 @@ function getIcon($path)
         'text/css' => 'resources/icons/css.png',
         'application/javascript' => 'resources/icons/javascript.png',
         'image/png' => 'resources/icons/png.png',
+        'image/jpeg' => 'resources/icons/jpeg.png',
+        'image/gif' => 'resources/icons/gif.png',
         'application/pdf' => 'resources/icons/pdf.png',
         'text/plain' => 'resources/icons/text.png',
         'text/php' => 'resources/icons/php.png',
@@ -28,19 +43,6 @@ function getIcon($path)
     ];
 
     return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default'];
-}
-
-// If a file is specified, display its content
-if (isset($_GET['file'])) {
-    $filePath = realpath($_GET['file']);
-    if ($filePath !== false && strpos($filePath, realpath('./')) === 0 && is_file($filePath)) {
-        $fileName = basename($filePath);
-        $fileContent = htmlspecialchars(file_get_contents($filePath));
-        $backDir = urlencode(dirname($filePath));
-    } else {
-        echo "<p>Invalid file path.</p>";
-        exit;
-    }
 }
 ?>
 
@@ -52,7 +54,7 @@ if (isset($_GET['file'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
     <script src="helpers/controller.js"></script>
-    <title>File Viewer</title>
+    <title>View File - <?php echo $fileName; ?></title>
 </head>
 
 <body>
@@ -62,7 +64,7 @@ if (isset($_GET['file'])) {
             <div class="navItems">
                 <nav>
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="localhost/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Contact</a></li>
@@ -75,11 +77,25 @@ if (isset($_GET['file'])) {
             </div>
         </div>
     </header>
+
     <main>
-        <div class="file-viewer">
-            <h2>Viewing: <?php echo htmlspecialchars($fileName); ?></h2>
-            <pre><?php echo $fileContent; ?></pre>
-            <a href="?dir=<?php echo $backDir; ?>" class="back-btn">Back to Directory</a>
+        <div class="file-view-container">
+            <h2>Viewing File: <?php echo $fileName; ?></h2>
+
+            <?php if (strpos($fileType, 'image') === 0) { ?>
+                <div class="file-content">
+                    <img src="<?php echo $filePath; ?>" alt="<?php echo $fileName; ?>"
+                        style="max-width: 100%; height: auto;">
+                </div>
+            <?php } elseif ($fileType == 'application/pdf') { ?>
+                <div class="file-content">
+                    <embed src="<?php echo $filePath; ?>" type="application/pdf" width="100%" height="600px" />
+                </div>
+            <?php } else { ?>
+                <div class="file-content">
+                    <pre><?php echo htmlspecialchars(file_get_contents($filePath)); ?></pre>
+                </div>
+            <?php } ?>
         </div>
     </main>
 </body>
