@@ -30,6 +30,18 @@ function getIcon($path)
     return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default'];
 }
 
+// If a file is specified, display its content
+if (isset($_GET['file'])) {
+    $filePath = realpath($_GET['file']);
+    if ($filePath !== false && strpos($filePath, realpath('./')) === 0 && is_file($filePath)) {
+        $fileName = basename($filePath);
+        $fileContent = htmlspecialchars(file_get_contents($filePath));
+        $backDir = urlencode(dirname($filePath));
+    } else {
+        echo "<p>Invalid file path.</p>";
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +52,7 @@ function getIcon($path)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
     <script src="helpers/controller.js"></script>
-    <title>Dashboard</title>
+    <title>File Viewer</title>
 </head>
 
 <body>
@@ -64,36 +76,10 @@ function getIcon($path)
         </div>
     </header>
     <main>
-        <div id="fileList" class="file-list">
-            <?php
-            if (is_dir($currentDir)) {
-                foreach ($dirsAndFiles as $item) {
-                    $itemPath = $currentDir . '/' . $item;
-                    $encodedPath = urlencode($itemPath);
-            
-                    if (is_dir($itemPath)) {
-                        echo "<a href='?dir=$encodedPath' class='file-card'>
-                            <div class='fileCard'>
-                                <img src='resources/icons/folder.png' alt='Folder Icon'>
-                                <h3>$item</h3>
-                                <p>Folder</p>
-                              </div></a>";
-                    } else {
-                        $fileType = mime_content_type($itemPath);
-                        $fileIcon = getIcon($itemPath);
-
-                        echo "<a href='view.php?file=$encodedPath' class='file-card'>
-                            <div class='fileCard'>
-                                <img src='$fileIcon' alt='File Icon'>
-                                <h3>$item</h3> 
-                                <p>Type: $fileType</p>
-                            </div></a>";
-                    }
-                }
-            } else {
-                echo "<p>The directory '$currentDir' does not exist.</p>";
-            }
-            ?>
+        <div class="file-viewer">
+            <h2>Viewing: <?php echo htmlspecialchars($fileName); ?></h2>
+            <pre><?php echo $fileContent; ?></pre>
+            <a href="?dir=<?php echo $backDir; ?>" class="back-btn">Back to Directory</a>
         </div>
     </main>
 </body>
