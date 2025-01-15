@@ -1,21 +1,18 @@
 <?php
 if (isset($_GET['file'])) {
-    // Get and sanitize the file path
+    
     $filePath = realpath(urldecode($_GET['file']));
-
-    // Check for invalid file paths (avoid directory traversal)
+    
     if ($filePath === false || strpos($filePath, realpath('./')) !== 0) {
         echo "<p>Invalid file path.</p>";
         exit;
     }
-
-    // Check if the file exists
+    
     if (!file_exists($filePath)) {
         echo "<p>The file does not exist.</p>";
         exit;
     }
-
-    // Get file details
+    
     $fileName = basename($filePath);
     $fileType = mime_content_type($filePath);
     $fileIcon = getIcon($filePath);
@@ -24,7 +21,6 @@ if (isset($_GET['file'])) {
     exit;
 }
 
-// Function to determine file icon
 function getIcon($path)
 {
     if (is_dir($path)) {
@@ -87,25 +83,21 @@ function getIcon($path)
             <h2>Viewing File: <?php echo $fileName; ?></h2>
 
             <?php
-            // For image files, directly output the image
             if (strpos($fileType, 'image') === 0) {
-                // Serve the image from the relative path
                 $imageUrl = str_replace(realpath('./'), '', $filePath);
                 ?>
                 <div class="file-content">
                     <img src="<?php echo $imageUrl; ?>" alt="<?php echo $fileName; ?>"
                         style="max-width: 100%; height: auto;">
                 </div>
-            <?php
-                // For PDF files, use embed to display them
+                <?php
             } elseif ($fileType == 'application/pdf') {
                 ?>
                 <div class="file-content">
                     <embed src="<?php echo str_replace(realpath('./'), '', $filePath); ?>" type="application/pdf"
                         width="100%" height="600px" />
                 </div>
-            <?php
-                // For text or other file types, display the content
+                <?php
             } else {
                 ?>
                 <div class="file-content">

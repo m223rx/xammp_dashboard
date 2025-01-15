@@ -24,6 +24,7 @@ function getIcon($path)
         'application/pdf' => 'resources/icons/pdf.png',
         'text/plain' => 'resources/icons/text.png',
         'text/php' => 'resources/icons/php.png',
+        'text/py' => 'resources/icons/python.png',
         'default' => 'resources/icons/document.png'
     ];
 
