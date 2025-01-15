@@ -5,6 +5,10 @@
   color: #fff;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background-color: #000;
   display: flex;
