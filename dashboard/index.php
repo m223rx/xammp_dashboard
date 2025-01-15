@@ -81,7 +81,7 @@ function getIcon($path)
                         $fileType = mime_content_type($itemPath);
                         $fileIcon = getIcon($itemPath);
 
-                        echo "<a href='$itemPath' target='_blank' class='file-card'>
+                        echo "<a href='http://192.168.1.121/$itemPath' target='_blank' class='file-card'>
                             <div class='fileCard'>
                                 <img src='$fileIcon' alt='File Icon'>
                                 <h3>$item</h3> 
