@@ -34,24 +34,29 @@
         <div id="fileList" class="file-list">
             <?php
             $dir = 'htdocs'; // Define the path to your htdocs folder
-            $files = array_diff(scandir($dir), array('..', '.')); // Get all files excluding '.' and '..'
+// Check if the directory exists before trying to read it
+            if (is_dir($dir)) {
+                $files = array_diff(scandir($dir), array('..', '.')); // Get all files excluding '.' and '..'
             
-            // Check if there are any files
-            if (count($files) == 0) {
-                echo "<p>No files found in the htdocs folder.</p>";
-            } else {
-                // Loop through files and create a card for each
-                foreach ($files as $file) {
-                    $filePath = $dir . '/' . $file;
-                    $fileType = mime_content_type($filePath); // Get MIME type for each file
-                    $fileIcon = getFileIcon($fileType); // Function to get the appropriate file icon
+                // Check if there are any files
+                if (count($files) == 0) {
+                    echo "<p>No files found in the htdocs folder.</p>";
+                } else {
+                    // Loop through files and create a card for each
+                    foreach ($files as $file) {
+                        $filePath = $dir . '/' . $file;
+                        $fileType = mime_content_type($filePath); // Get MIME type for each file
+                        $fileIcon = getFileIcon($fileType); // Function to get the appropriate file icon
             
-                    echo "<div class='file-card'>
-                            <img src='$fileIcon' alt='File Icon'>
-                            <h3>$file</h3>
-                            <p>Type: $fileType</p>
-                          </div>";
+                        echo "<div class='file-card'>
+                    <img src='$fileIcon' alt='File Icon'>
+                    <h3>$file</h3>
+                    <p>Type: $fileType</p>
+                  </div>";
+                    }
                 }
+            } else {
+                echo "<p>The directory '$dir' does not exist.</p>";
             }
 
             // Function to get the file icon based on the MIME type
@@ -71,6 +76,7 @@
                 return isset($icons[$mimeType]) ? $icons[$mimeType] : $icons['default'];
             }
             ?>
+
         </div>
     </main>
 </body>
