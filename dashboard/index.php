@@ -83,7 +83,7 @@ function getIcon($path)
                         echo "<div class='file-card'>
                             <div class='fileCard'>
                                 <img src='$fileIcon' alt='File Icon'>
-                                <h3>$item</h3> <!-- Changed from $file to $item -->
+                                <h3>$item</h3> 
                                 <p>Type: $fileType</p>
                             </div>
                         </div>";
