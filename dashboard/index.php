@@ -9,26 +9,37 @@ if ($currentDir === false || strpos($currentDir, realpath('./')) !== 0) {
 
 $dirsAndFiles = array_diff(scandir($currentDir), array('..', '.'));
 
+$icons = [
+    // Image icons
+    'jpg' => 'resources/icons/jpeg.png',
+    'jpeg' => 'resources/icons/jpeg.png',
+    'png' => 'resources/icons/png.png',
+    'gif' => 'resources/icons/gif.png',
+    'bmp' => 'resources/icons/bmp.png',
+    'svg' => 'resources/icons/svg.png',
+
+    'pdf' => 'resources/icons/pdf.png',
+    'txt' => 'resources/icons/text.png',
+    'html' => 'resources/icons/html.png',
+    'css' => 'resources/icons/css.png',
+    'js' => 'resources/icons/javascript.png',
+    'php' => 'resources/icons/php.png',
+    'py' => 'resources/icons/python.png',
+
+    'default' => 'resources/icons/document.png'
+];
+
+function getFileExtension($path)
+{
+    return pathinfo($path, PATHINFO_EXTENSION);
+}
+
 function getIcon($path)
 {
-    if (is_dir($path)) {
-        return 'resources/icons/folder.png';
-    }
+    global $icons;
 
-    $fileType = mime_content_type($path);
-    $icons = [
-        'text/html' => 'resources/icons/html.png',
-        'text/css' => 'resources/icons/css.png',
-        'application/javascript' => 'resources/icons/javascript.png',
-        'image/png' => 'resources/icons/png.png',
-        'application/pdf' => 'resources/icons/pdf.png',
-        'text/plain' => 'resources/icons/text.png',
-        'text/php' => 'resources/icons/php.png',
-        'text/python' => 'resources/icons/python.png',
-        'default' => 'resources/icons/document.png'
-    ];
-
-    return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default'];
+    $extension = strtolower(getFileExtension($path));
+    return isset($icons[$extension]) ? $icons[$extension] : $icons['default'];
 }
 
 ?>
@@ -71,7 +82,7 @@ function getIcon($path)
                 foreach ($dirsAndFiles as $item) {
                     $itemPath = $currentDir . '/' . $item;
                     $encodedPath = urlencode($itemPath);
-            
+
                     if (is_dir($itemPath)) {
                         echo "<a href='?dir=$encodedPath' class='file-card'>
                             <div class='fileCard'>
