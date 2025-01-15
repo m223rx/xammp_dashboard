@@ -248,6 +248,7 @@ form {
 }
 
 textarea {
+  padding: 5px 5px;
   background-color: transparent;
   color: #fff;
   font-size: 1rem;
