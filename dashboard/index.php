@@ -50,7 +50,7 @@ function getIcon($path)
             <div class="navItems">
                 <nav>
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="localhost/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Contact</a></li>
