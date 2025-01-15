@@ -94,7 +94,7 @@ function getIcon($path)
                         $fileType = mime_content_type($itemPath);
                         $fileIcon = getIcon($itemPath);
 
-                        echo "<a href='view.php?file=$encodedPath' class='file-card'>
+                        echo "<a href='context/view.php?file=$encodedPath' class='file-card'>
                             <div class='fileCard'>
                                 <img src='$fileIcon' alt='File Icon'>
                                 <h3>$item</h3> 

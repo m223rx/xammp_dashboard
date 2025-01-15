@@ -196,14 +196,27 @@ main {
   transition: color 0.3s ease;
 }
 
-.file-view-container{
+.file-view-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-bottom: 20px;
 }
 
-.file-view-container>h2{
+.operationContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.operationContainer > h2 {
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.operationContainer > a {
+  text-decoration: underline;
   color: #fff;
   font-size: 1.7rem;
 }
