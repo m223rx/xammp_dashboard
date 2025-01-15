@@ -16,21 +16,21 @@ $dirsAndFiles = array_diff(scandir($currentDir), array('..', '.')); // Get files
 function getIcon($path)
 {
     if (is_dir($path)) {
-        return 'icons/folder.png'; // Folder icon
+        return 'resources/icons/folder.png'; // Corrected path
     }
 
     $fileType = mime_content_type($path); // Get MIME type for each file
     $icons = [
-        'text/html' => 'icons/html.png',
-        'text/css' => 'icons/css.png',
-        'application/javascript' => 'icons/javascript.png',
-        'image/png' => 'icons/png.png',
-        'application/pdf' => 'icons/pdf.png',
-        'text/plain' => 'icons/text.png',
-        'default' => 'icons/document.png'
+        'text/html' => 'resources/icons/html.png',
+        'text/css' => 'resources/icons/css.png',
+        'application/javascript' => 'resources/icons/javascript.png',
+        'image/png' => 'resources/icons/png.png',
+        'application/pdf' => 'resources/icons/pdf.png',
+        'text/plain' => 'resources/icons/text.png',
+        'default' => 'resources/icons/document.png'
     ];
 
-    return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default']; // Default icon for other file types
+    return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default'];
 }
 ?>
 
