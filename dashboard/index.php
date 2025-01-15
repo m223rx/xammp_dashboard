@@ -71,11 +71,9 @@ function getIcon($path)
 
                     if (is_dir($itemPath)) {
                         echo "<div class='file-card'>
-                                <a href='?dir=" . urlencode($itemPath) . "'>
-                                    <img src='resources/icons/folder.png' alt='Folder Icon'>
-                                    <h3>$item</h3>
-                                    <p>Folder</p>
-                                </a>
+                                <img src='resources/icons/folder.png' alt='Folder Icon'>
+                                <h3>$item</h3>
+                                <p>Folder</p>
                               </div>";
                     } else {
                         $fileType = mime_content_type($itemPath);
