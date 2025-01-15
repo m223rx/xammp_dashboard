@@ -50,7 +50,7 @@ function getIcon($path)
                 <nav>
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="localhost/phpmyadmin">PhpMyAdmin</a></li>
+                        <li><a href="localhost/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
@@ -68,28 +68,27 @@ function getIcon($path)
             if (is_dir($currentDir)) {
                 foreach ($dirsAndFiles as $item) {
                     $itemPath = $currentDir . '/' . $item;
-
+                    $encodedPath = urlencode($itemPath); // Encode the path for safe URL use
+            
                     if (is_dir($itemPath)) {
-                        echo "<div class='file-card'>
+                        echo "<a href='?dir=$encodedPath' class='file-card'>
                             <div class='fileCard'>
                                 <img src='resources/icons/folder.png' alt='Folder Icon'>
                                 <h3>$item</h3>
                                 <p>Folder</p>
-                              </div></div>";
+                              </div></a>";
                     } else {
                         $fileType = mime_content_type($itemPath);
                         $fileIcon = getIcon($itemPath);
 
-                        echo "<div class='file-card'>
+                        echo "<a href='$itemPath' target='_blank' class='file-card'>
                             <div class='fileCard'>
                                 <img src='$fileIcon' alt='File Icon'>
                                 <h3>$item</h3> 
                                 <p>Type: $fileType</p>
-                            </div>
-                        </div>";
+                            </div></a>";
                     }
                 }
-
             } else {
                 echo "<p>The directory '$currentDir' does not exist.</p>";
             }
