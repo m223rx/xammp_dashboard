@@ -71,10 +71,11 @@ function getIcon($path)
 
                     if (is_dir($itemPath)) {
                         echo "<div class='file-card'>
+                            <div class='fileCard'>
                                 <img src='resources/icons/folder.png' alt='Folder Icon'>
                                 <h3>$item</h3>
                                 <p>Folder</p>
-                              </div>";
+                              </div></div>";
                     } else {
                         $fileType = mime_content_type($itemPath);
                         $fileIcon = getIcon($itemPath);
