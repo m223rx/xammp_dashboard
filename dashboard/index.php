@@ -72,7 +72,7 @@ function getIcon($path)
                     if (is_dir($itemPath)) {
                         echo "<div class='file-card'>
                                 <a href='?dir=" . urlencode($itemPath) . "'>
-                                    <img src='icons/folder.png' alt='Folder Icon'>
+                                    <img src='resources/icons/folder.png' alt='Folder Icon'>
                                     <h3>$item</h3>
                                     <p>Folder</p>
                                 </a>
@@ -84,12 +84,13 @@ function getIcon($path)
                         echo "<div class='file-card'>
                             <div class='fileCard'>
                                 <img src='$fileIcon' alt='File Icon'>
-                                <h3>$file</h3>
+                                <h3>$item</h3> <!-- Changed from $file to $item -->
                                 <p>Type: $fileType</p>
                             </div>
                         </div>";
                     }
                 }
+
             } else {
                 echo "<p>The directory '$currentDir' does not exist.</p>";
             }
