@@ -81,8 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <br>
                 <button type="submit">Save Changes</button>
             </form>
-
-            <a href="view.php?file=<?php echo urlencode($filePath); ?>">View File</a>
         </div>
     </main>
 </body>

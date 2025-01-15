@@ -245,6 +245,8 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  justify-content: space-between;
+  height: 100%;
 }
 
 textarea {
@@ -256,7 +258,7 @@ textarea {
   outline: none;
 }
 
-form>button{
+form > button {
   display: flex;
   align-items: center;
   justify-content: center;
