@@ -1,25 +1,21 @@
 <?php
-// Get the current directory from the URL query parameter (if any)
 $currentDir = isset($_GET['dir']) ? $_GET['dir'] : './';
 
-// Ensure the directory path is safe and valid
 $currentDir = realpath($currentDir);
 if ($currentDir === false || strpos($currentDir, realpath('./')) !== 0) {
-    // If the directory is invalid or not inside the root directory
     echo "<p>Invalid directory path.</p>";
     exit;
 }
 
-$dirsAndFiles = array_diff(scandir($currentDir), array('..', '.')); // Get files and folders excluding '.' and '..'
+$dirsAndFiles = array_diff(scandir($currentDir), array('..', '.'));
 
-// Function to get the file or folder icon
 function getIcon($path)
 {
     if (is_dir($path)) {
-        return 'resources/icons/folder.png'; // Corrected path
+        return 'resources/icons/folder.png';
     }
 
-    $fileType = mime_content_type($path); // Get MIME type for each file
+    $fileType = mime_content_type($path);
     $icons = [
         'text/html' => 'resources/icons/html.png',
         'text/css' => 'resources/icons/css.png',
@@ -27,6 +23,7 @@ function getIcon($path)
         'image/png' => 'resources/icons/png.png',
         'application/pdf' => 'resources/icons/pdf.png',
         'text/plain' => 'resources/icons/text.png',
+        'text/php' => 'resources/icons/php.png',
         'default' => 'resources/icons/document.png'
     ];
 
@@ -66,17 +63,13 @@ function getIcon($path)
         </div>
     </header>
     <main>
-        <!-- Show all the available files and folders -->
         <div id="fileList" class="file-list">
             <?php
-            // Check if the directory exists before trying to read it
             if (is_dir($currentDir)) {
-                // Loop through directories and files
                 foreach ($dirsAndFiles as $item) {
                     $itemPath = $currentDir . '/' . $item;
 
                     if (is_dir($itemPath)) {
-                        // If it's a folder, display it as a folder card
                         echo "<div class='file-card'>
                                 <a href='?dir=" . urlencode($itemPath) . "'>
                                     <img src='icons/folder.png' alt='Folder Icon'>
@@ -85,10 +78,9 @@ function getIcon($path)
                                 </a>
                               </div>";
                     } else {
-                        // If it's a file, display it as a file card
-                        $fileType = mime_content_type($itemPath); // Get MIME type for each file
-                        $fileIcon = getIcon($itemPath); // Get the appropriate file icon
-            
+                        $fileType = mime_content_type($itemPath);
+                        $fileIcon = getIcon($itemPath);
+
                         echo "<div class='file-card'>
                             <div class='fileCard'>
                                 <img src='$fileIcon' alt='File Icon'>
