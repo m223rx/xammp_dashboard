@@ -232,9 +232,17 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-inline: 40px;
 }
 
 .file-edit-container > h2 {
   color: #fff;
   font-size: 1.7rem;
+}
+
+form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
