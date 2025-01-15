@@ -29,6 +29,20 @@ function getIcon($path)
 
     return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default'];
 }
+
+// If a file is specified, display its content
+if (isset($_GET['file'])) {
+    $filePath = realpath($_GET['file']);
+    if ($filePath !== false && strpos($filePath, realpath('./')) === 0 && is_file($filePath)) {
+        echo "<h2>Viewing: " . htmlspecialchars(basename($filePath)) . "</h2>";
+        echo "<pre>" . htmlspecialchars(file_get_contents($filePath)) . "</pre>";
+        echo "<a href='?dir=" . urlencode(dirname($filePath)) . "'>Back</a>";
+        exit;
+    } else {
+        echo "<p>Invalid file path.</p>";
+        exit;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +95,7 @@ function getIcon($path)
                         $fileType = mime_content_type($itemPath);
                         $fileIcon = getIcon($itemPath);
 
-                        echo "<a href='item?$encodedPath' class='file-card'>
+                        echo "<a href='?file=$encodedPath' class='file-card'>
                             <div class='fileCard'>
                                 <img src='$fileIcon' alt='File Icon'>
                                 <h3>$item</h3> 
