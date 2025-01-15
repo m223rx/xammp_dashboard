@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script src="helpers/controller.js"></script>
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <div class="headerContainer">
+            <img src="./resources/images/logo.png" alt="" onclick="return redirect('#');">
+            <div class="navItems">
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="localhost/phpmyadmin">PhpMyAdmin</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="searchContainer">
+                <input type="text" placeholder="Search...">
+                <button type="submit">Search</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Show all the available files in the root -->
+        <div id="fileList" class="file-list">
+            <p>No files found in the directory.</p>
+            <div class='file-card'>
+                <div class="fileCard">
+                    <img src='./resources/icons/css.png' alt='File Icon'>
+                    <h3>$file</h3>
+                    <p>Type: $fileType</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

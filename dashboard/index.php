@@ -1,3 +1,39 @@
+<?php
+// Get the current directory from the URL query parameter (if any)
+$currentDir = isset($_GET['dir']) ? $_GET['dir'] : './';
+
+// Ensure the directory path is safe and valid
+$currentDir = realpath($currentDir);
+if ($currentDir === false || strpos($currentDir, realpath('./')) !== 0) {
+    // If the directory is invalid or not inside the root directory
+    echo "<p>Invalid directory path.</p>";
+    exit;
+}
+
+$dirsAndFiles = array_diff(scandir($currentDir), array('..', '.')); // Get files and folders excluding '.' and '..'
+
+// Function to get the file or folder icon
+function getIcon($path)
+{
+    if (is_dir($path)) {
+        return 'icons/folder.png'; // Folder icon
+    }
+
+    $fileType = mime_content_type($path); // Get MIME type for each file
+    $icons = [
+        'text/html' => 'icons/html.png',
+        'text/css' => 'icons/css.png',
+        'application/javascript' => 'icons/javascript.png',
+        'image/png' => 'icons/png.png',
+        'application/pdf' => 'icons/pdf.png',
+        'text/plain' => 'icons/text.png',
+        'default' => 'icons/document.png'
+    ];
+
+    return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default']; // Default icon for other file types
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,55 +66,40 @@
         </div>
     </header>
     <main>
-        <!-- Show all the available files in the root -->
+        <!-- Show all the available files and folders -->
         <div id="fileList" class="file-list">
             <?php
-            $dir = './'; // Define the path to your directory
-// Check if the directory exists before trying to read it
-            if (is_dir($dir)) {
-                $files = array_diff(scandir($dir), array('..', '.')); // Get all files excluding '.' and '..'
-            
-                // Check if there are any files
-                if (count($files) == 0) {
-                    echo "<p>No files found in the directory.</p>";
-                } else {
-                    // Loop through files and create a card for each
-                    foreach ($files as $file) {
-                        $filePath = $dir . '/' . $file;
+            // Check if the directory exists before trying to read it
+            if (is_dir($currentDir)) {
+                // Loop through directories and files
+                foreach ($dirsAndFiles as $item) {
+                    $itemPath = $currentDir . '/' . $item;
 
-                        // Check if it's a file (not a directory)
-                        if (is_file($filePath)) {
-                            $fileType = mime_content_type($filePath); // Get MIME type for each file
-                            $fileIcon = getFileIcon($fileType); // Function to get the appropriate file icon
+                    if (is_dir($itemPath)) {
+                        // If it's a folder, display it as a folder card
+                        echo "<div class='file-card'>
+                                <a href='?dir=" . urlencode($itemPath) . "'>
+                                    <img src='icons/folder.png' alt='Folder Icon'>
+                                    <h3>$item</h3>
+                                    <p>Folder</p>
+                                </a>
+                              </div>";
+                    } else {
+                        // If it's a file, display it as a file card
+                        $fileType = mime_content_type($itemPath); // Get MIME type for each file
+                        $fileIcon = getIcon($itemPath); // Get the appropriate file icon
             
-                            // Display the file as a card
-                            echo "<div class='file-card'>
-                        <img src='$fileIcon' alt='File Icon'>
-                        <h3>$file</h3>
-                        <p>Type: $fileType</p>
-                      </div>";
-                        }
+                        echo "<div class='file-card'>
+                            <div class='fileCard'>
+                                <img src='$fileIcon' alt='File Icon'>
+                                <h3>$file</h3>
+                                <p>Type: $fileType</p>
+                            </div>
+                        </div>";
                     }
                 }
             } else {
-                echo "<p>The directory '$dir' does not exist.</p>";
-            }
-
-            // Function to get the file icon based on the MIME type
-            function getFileIcon($mimeType)
-            {
-                $icons = [
-                    'text/html' => 'icons/html-icon.png',
-                    'text/css' => 'icons/css-icon.png',
-                    'application/javascript' => 'icons/js-icon.png',
-                    'image/png' => 'icons/png-icon.png',
-                    'application/pdf' => 'icons/pdf-icon.png',
-                    'text/plain' => 'icons/text-icon.png', // New MIME type added for text files
-                    'default' => 'icons/default-icon.png'
-                ];
-
-                // Return the appropriate icon or a default icon if not found
-                return isset($icons[$mimeType]) ? $icons[$mimeType] : $icons['default'];
+                echo "<p>The directory '$currentDir' does not exist.</p>";
             }
             ?>
         </div>
