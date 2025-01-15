@@ -204,10 +204,12 @@ main {
 }
 
 .operationContainer {
+  flex: 1;
   display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .operationContainer > h2 {
@@ -217,6 +219,22 @@ main {
 
 .operationContainer > a {
   text-decoration: underline;
+  color: #fff;
+  font-size: 1.7rem;
+}
+
+.file-view-container {
+  display: flex;
+  margin-inline: 40px;
+}
+
+.file-edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.file-edit-container > h2 {
   color: #fff;
   font-size: 1.7rem;
 }
