@@ -246,3 +246,9 @@ form {
   flex-direction: column;
   gap: 10px;
 }
+
+textarea {
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+}
