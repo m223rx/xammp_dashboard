@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main>
         <div class="file-edit-container">
             <h2>Edit File: <?php echo basename($filePath); ?></h2>
-            
+
             <form method="post">
                 <textarea name="fileContent" rows="20"
                     cols="100"><?php echo htmlspecialchars($fileContent); ?></textarea>

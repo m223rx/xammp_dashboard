@@ -94,16 +94,14 @@ function getIcon($path)
                         style="max-width: 100%; height: auto;">
                 </div>
                 <?php
-            }
-            elseif ($fileType == 'application/pdf') {
+            } elseif ($fileType == 'application/pdf') {
                 ?>
                 <div class="file-content">
                     <embed src="<?php echo str_replace(realpath('../'), '', $filePath); ?>" type="application/pdf"
                         width="100%" height="600px" />
                 </div>
                 <?php
-            }
-            else {
+            } else {
                 ?>
                 <div class="file-content">
                     <pre><?php echo htmlspecialchars(file_get_contents($filePath)); ?></pre>

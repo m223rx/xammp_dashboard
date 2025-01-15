@@ -10,14 +10,12 @@ if ($currentDir === false || strpos($currentDir, realpath('./')) !== 0) {
 $dirsAndFiles = array_diff(scandir($currentDir), array('..', '.'));
 
 $icons = [
-    // Image icons
     'jpg' => 'resources/icons/jpeg.png',
     'jpeg' => 'resources/icons/jpeg.png',
     'png' => 'resources/icons/png.png',
     'gif' => 'resources/icons/gif.png',
     'bmp' => 'resources/icons/bmp.png',
     'svg' => 'resources/icons/svg.png',
-
     'pdf' => 'resources/icons/pdf.png',
     'txt' => 'resources/icons/text.png',
     'html' => 'resources/icons/html.png',
@@ -25,7 +23,6 @@ $icons = [
     'js' => 'resources/icons/javascript.png',
     'php' => 'resources/icons/php.png',
     'py' => 'resources/icons/python.png',
-
     'default' => 'resources/icons/document.png'
 ];
 
@@ -41,7 +38,6 @@ function getIcon($path)
     $extension = strtolower(getFileExtension($path));
     return isset($icons[$extension]) ? $icons[$extension] : $icons['default'];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -62,7 +58,7 @@ function getIcon($path)
             <div class="navItems">
                 <nav>
                     <ul>
-                        <li><a href="/dashboard/">Home</a></li>
+                        <li><a href="index.php">Home</a></li>
                         <li><a href="localhost/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Contact</a></li>
