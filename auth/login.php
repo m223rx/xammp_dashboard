@@ -1,22 +1,31 @@
 <?php
-session_start(); // Start the session
+session_start();
+include("./helpers/connect.php");
 
-// Dummy credentials (You can replace this with a database check)
-$valid_username = 'admin';
-$valid_password = 'password123';
-
-// Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if ($username === $valid_username && $password === $valid_password) {
-        // Set session variable to indicate the user is logged in
-        $_SESSION['logged_in'] = true;
-        header('Location: ../index.php'); // Redirect to index page
-        exit;
-    } else {
-        $error_message = 'Invalid username or password.';
+    if (
+        isset(
+        $username,
+        $password
+    )
+    ) {
+        $sql = 'SELECT username FROM users WHERE username=' . $username . '';
+        $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $stored_password = $row['password'];
+            if (password_verify($password, $stored_password)) {
+                $_SESSION['logged_in'] = true;
+                header('Location: ../index.php');
+                exit;
+            } else {
+                $_SESSION['logged_in'] = false;
+                $error_message = 'Invalid username or password.';
+            }
+        }
     }
 }
 ?>
@@ -36,6 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-container">
         <div class="loginFormContainer">
             <h2>Login</h2>
+            <?php
+            $password = "mortadha2020";
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            echo "<p>
+                password: $hashed_password
+                </p>"
+                ?>
             <?php
             if (isset($error_message)) {
                 echo "<p style='color: red;'>$error_message</p>";
