@@ -1,9 +1,7 @@
 <?php
-session_start(); // Start the session
+session_start();
 
-// Check if the user is logged in
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-    // Redirect to login page if not logged in
     header('Location: /auth/login.php');
     exit;
 }
@@ -69,6 +67,18 @@ function getIcon($path)
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="http://192.168.1.121/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
+                        <?php
+                        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+                            echo '
+                                    <li>
+                                        <form action="index.php" method="post">
+                                            <button type="submit">logout</button>
+                                        </form>
+                                    </li>
+                                ';
+                        }
+                        ?>
+
                     </ul>
                 </nav>
             </div>
