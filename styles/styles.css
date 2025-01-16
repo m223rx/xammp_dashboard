@@ -116,8 +116,7 @@ ul > li:not(:first-child):hover {
   background-color: transparent;
   outline: none;
   border: none;
-  border: 1px solid #fff;
-  border-radius: 5px;
+  border-bottom: 1px solid #fff;
   color: #fff;
 }
 
