@@ -93,6 +93,9 @@ ul > li > form {
 ul > li > form > button {
   width: 100%;
   border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bolder;
 }
 
 ul > li:not(:first-child):hover {
