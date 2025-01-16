@@ -21,7 +21,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 <body>
     <?php
-    include('../components/header.php');
+    include('../../components/header.php');
     ?>
     <main>
 
