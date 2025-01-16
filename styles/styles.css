@@ -285,7 +285,7 @@ form > button {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 250px;
+  width: fit-content;
   align-items: center;
   height: auto;
   border: 1px solid #fff;
