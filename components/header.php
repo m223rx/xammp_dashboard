@@ -4,7 +4,7 @@
         <div class="navItems">
             <nav>
                 <ul>
-                    <li><a href="index.php">Home</a></li>
+                    <li><a href="../index.php">Home</a></li>
                     <li><a href="./services/services.php">Services</a></li>
                     <li><a href="http://192.168.1.121/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
                     <?php
