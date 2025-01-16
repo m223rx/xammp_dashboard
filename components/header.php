@@ -1,6 +1,6 @@
 <header>
     <div class="headerContainer">
-        <img src="../resources/images/logo.png" alt="" onclick="return redirect('#');">
+        <img src="http://192.168.1.121/resources/images/logo.png" alt="" onclick="return redirect('#');">
         <div class="navItems">
             <nav>
                 <ul>
