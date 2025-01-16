@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
@@ -8,10 +7,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 }
 
 if (isset($_GET['file'])) {
-
     $filePath = realpath(urldecode($_GET['file']));
 
-    if ($filePath === false || strpos($filePath, realpath('./')) !== 0) {
+    $baseDir = realpath('../');
+    if ($filePath === false || strpos($filePath, $baseDir) !== 0) {
         echo "<p>Invalid file path.</p>";
         exit;
     }
@@ -51,7 +50,6 @@ function getIcon($path)
 
     return isset($icons[$fileType]) ? $icons[$fileType] : $icons['default'];
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -62,27 +60,26 @@ function getIcon($path)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="../helpers/controller.js"></script>
-    <title>View File - <?php echo $fileName; ?></title>
+    <title>View File - <?php echo htmlspecialchars($fileName); ?></title>
 </head>
 
 <body>
-    <?php
-    include('../components/header.php');
-    ?>
+    <?php include('../components/header.php'); ?>
 
     <main>
         <div class="file-view-container">
             <div class="operationContainer">
-                <h2>Viewing File: <?php echo $fileName; ?> </h2>
+                <h2>Viewing File: <?php echo htmlspecialchars($fileName); ?> </h2>
                 <a href="edit.php?file=<?php echo urlencode($filePath); ?>">Edit File</a>
             </div>
 
             <?php
+            // Display file content
             if (strpos($fileType, 'image') === 0) {
                 $imageUrl = str_replace(realpath('../'), '', $filePath);
                 ?>
                 <div class="file-content">
-                    <img src="<?php echo $imageUrl; ?>" alt="<?php echo $fileName; ?>"
+                    <img src="<?php echo $imageUrl; ?>" alt="<?php echo htmlspecialchars($fileName); ?>"
                         style="max-width: 100%; height: auto;">
                 </div>
                 <?php
