@@ -343,3 +343,10 @@ form > label {
   background-color: #fff;
   color: #000;
 }
+
+.servicesContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-inline: 40px;
+}

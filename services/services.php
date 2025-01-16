@@ -23,7 +23,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <?php
     include('../components/header.php');
     ?>
-
+    <main>
+        <div class="servicesContainer">
+            <h1>Services</h1>
+        </div>
+    </main>
 </body>
 
 </html>
