@@ -2,8 +2,6 @@
 $base_url = 'http://192.168.1.121';
 ?>
 
-<?php echo $base_url; ?>
-
 <header>
     <div class="headerContainer">
         <img src="<?php echo $base_url; ?>/resources/images/logo.png" alt="Logo" onclick="return redirect('#');">
