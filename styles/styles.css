@@ -273,10 +273,8 @@ form > button {
 }
 
 .login-container {
-  display: flex;
   flex: 1;
-  height: 100%;
-  width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -290,4 +288,5 @@ form > button {
   height: auto;
   border: 1px solid #fff;
   padding: 20px 15px;
+  border-radius: 20px;
 }
