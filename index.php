@@ -45,6 +45,12 @@ function getIcon($path)
     $extension = strtolower(getFileExtension($path));
     return isset($icons[$extension]) ? $icons[$extension] : $icons['default'];
 }
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $_SESSION['logged_in'] = true;
+
+}
+
 ?>
 
 <!DOCTYPE html>
