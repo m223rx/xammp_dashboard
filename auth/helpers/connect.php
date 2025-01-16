@@ -6,9 +6,6 @@ if (mysqli_connect_errno()) {
     printf("Error", mysqli_connect_error());
     exit(1);
 }
-if (!mysqli_query($conn, "")) {
-    printf("", mysqli_connect_error());
-}
 return $conn;
 
 ?>
