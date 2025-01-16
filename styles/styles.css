@@ -96,6 +96,7 @@ ul > li > form > button {
   color: #fff;
   font-size: 1.3rem;
   font-weight: bolder;
+  padding: 0;
 }
 
 ul > li:not(:first-child):hover {
