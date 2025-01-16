@@ -20,8 +20,9 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 </head>
 
 <body>
-
-
+    <?php
+    include('../components/header.php');
+    ?>
 
 </body>
 

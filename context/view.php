@@ -66,25 +66,9 @@ function getIcon($path)
 </head>
 
 <body>
-    <header>
-        <div class="headerContainer">
-            <img src="../resources/images/logo.png" alt="" onclick="return redirect('#');">
-            <div class="navItems">
-                <nav>
-                    <ul>
-                        <li><a href="../index.php">Home</a></li>
-                        <li><a href="localhost/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="searchContainer">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
-            </div>
-        </div>
-    </header>
+    <?php
+    include('../components/header.php');
+    ?>
 
     <main>
         <div class="file-view-container">
