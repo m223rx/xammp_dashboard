@@ -129,7 +129,7 @@ ul > li:not(:first-child):hover {
   cursor: pointer;
   transition: all ease 1s;
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .searchContainer > button:hover {
