@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header('Location: /auth/login.php');
+    exit;
+}
+
 if (isset($_GET['file'])) {
     $filePath = realpath(urldecode($_GET['file']));
 

@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header('Location: /auth/login.php');
+    exit;
+}
+
 if (isset($_GET['file'])) {
 
     $filePath = realpath(urldecode($_GET['file']));
@@ -87,7 +95,7 @@ function getIcon($path)
 
             <?php
             if (strpos($fileType, 'image') === 0) {
-                $imageUrl = str_replace(realpath('../'), '', $filePath); // Convert to relative path
+                $imageUrl = str_replace(realpath('../'), '', $filePath);
                 ?>
                 <div class="file-content">
                     <img src="<?php echo $imageUrl; ?>" alt="<?php echo $fileName; ?>"
