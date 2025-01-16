@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <nav>
                     <ul>
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="./services/services.php" target="_blank">Services</a></li>
+                        <li><a href="./services/services.php">Services</a></li>
                         <li><a href="http://192.168.1.121/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
                         <?php
                         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
