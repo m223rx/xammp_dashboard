@@ -344,9 +344,16 @@ form > label {
   color: #000;
 }
 
-.servicesContainer{
+.servicesContainer {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin-inline: 40px;
+}
+
+.servicesHandler {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
 }

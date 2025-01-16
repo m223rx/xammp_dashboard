@@ -26,6 +26,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <main>
         <div class="servicesContainer">
             <h1>Services</h1>
+            <div class="servicesHandler">
+                <div class="servicesCardContainer">
+                    <img src="../resources/images/minecraft.jpeg" alt="">
+                    <h3>Minecraft Server</h3>
+                </div>
+            </div>
         </div>
     </main>
 </body>
