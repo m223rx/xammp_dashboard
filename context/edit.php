@@ -1,32 +1,26 @@
 <?php
-// Check if a file is provided via GET request
+
 if (isset($_GET['file'])) {
     $filePath = realpath(urldecode($_GET['file']));
 
-    // Validate file path to ensure it is within the allowed directory
     if ($filePath === false || strpos($filePath, realpath('./')) !== 0) {
         echo "<p>Invalid file path.</p>";
         exit;
     }
 
-    // Check if the file exists
     if (!file_exists($filePath)) {
         echo "<p>The file does not exist.</p>";
         exit;
     }
 
-    // Get the file's content if it's a text-based file (e.g., txt, html, php)
     $fileContent = file_get_contents($filePath);
 } else {
     echo "<p>No file specified.</p>";
     exit;
 }
 
-// Handle form submission to save the changes
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newContent = $_POST['fileContent'];
-
-    // Validate if content is not empty before saving
     if (!empty($newContent)) {
         if (file_put_contents($filePath, $newContent)) {
             echo "<p>File saved successfully!</p>";
