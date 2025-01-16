@@ -7,9 +7,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     if (isset($username, $password)) {
-        // Use prepared statements to prevent SQL injection
         $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
-        $stmt->bind_param("s", $username); // "s" stands for string
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -52,12 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-container">
         <div class="loginFormContainer">
             <h2>Login</h2>
-            <?php
-            // Optionally show password hash for testing
-            $password = "mortadha2020";
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            echo "<p>Password Hash: $hashed_password</p>";
-            ?>
             <?php
             if (isset($error_message)) {
                 echo "<p style='color: red;'>$error_message</p>";
