@@ -59,7 +59,7 @@ function getIcon($path)
                 <nav>
                     <ul>
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="localhost/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
+                        <li><a href="http://192.168.1.121/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
                     </ul>
                 </nav>
             </div>
