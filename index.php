@@ -48,7 +48,8 @@ function getIcon($path)
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_SESSION['logged_in'] = false;
-
+    header('Location: /auth/login.php');
+    exit;
 }
 
 ?>
