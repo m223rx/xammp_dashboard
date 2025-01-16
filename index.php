@@ -60,8 +60,6 @@ function getIcon($path)
                     <ul>
                         <li><a href="index.php">Home</a></li>
                         <li><a href="localhost/phpmyadmin" target="_blank">PhpMyAdmin</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
                     </ul>
                 </nav>
             </div>
