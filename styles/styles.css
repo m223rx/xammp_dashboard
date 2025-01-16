@@ -272,6 +272,7 @@ form > button {
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
+  transition: all ease 0.5s;
 }
 
 .login-container {
@@ -320,7 +321,11 @@ form > label {
   align-items: center;
 }
 
-.loginFormContainer > form >button:hover{
+.loginFormContainer > form > button {
+  margin-top: 20px;
+}
+
+.loginFormContainer > form > button:hover {
   background-color: #fff;
   color: #000;
 }
