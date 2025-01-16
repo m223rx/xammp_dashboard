@@ -16,7 +16,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="./helpers/controller.js"></script>
+    <script src="../helpers/controller.js"></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <div class="servicesContainer">
             <h1>Services</h1>
             <div class="servicesHandler">
-                <div class="servicesCardContainer">
+                <div class="servicesCardContainer" onclick="return redirect('./minecraft/minecraft.php');">
                     <img src="../resources/images/minecraft.jpeg" alt="">
                     <h3>Minecraft Server</h3>
                 </div>
