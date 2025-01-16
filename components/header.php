@@ -1,10 +1,10 @@
 <?php
 // Define dynamic base URL
-$base_url = 'http://' . $_SERVER['HTTP_HOST'] . str_replace('\\', '/', dirname($_SERVER['PHP_SELF']));
+$base_url = 'http://' . $_SERVER['HTTP_HOST'] . str_replace('\\', '/', rtrim(dirname($_SERVER['PHP_SELF']), '/'));
 
-// Ensure the base URL does not end with a slash (except the root "/")
-if (substr($base_url, -1) === '/') {
-    $base_url = rtrim($base_url, '/');
+// Ensure base URL ends correctly (if in root directory)
+if ($base_url === 'http://' . $_SERVER['HTTP_HOST']) {
+    $base_url = 'http://' . $_SERVER['HTTP_HOST']; // Force it to be root URL
 }
 ?>
 
