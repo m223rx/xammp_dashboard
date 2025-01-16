@@ -301,6 +301,17 @@ form > button {
 
 form > label {
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bolder;
+}
+
+form > input {
+  padding: 5px 5px;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  border: 1px #fff solid;
 }

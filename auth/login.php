@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?>
             <form action="login.php" method="POST">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" placeholder="@username" required>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password" placeholder="**********" required>
                 <button type="submit">Login</button>
             </form>
         </div>
