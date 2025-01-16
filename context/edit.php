@@ -33,25 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($newContent)) {
         if (file_put_contents($filePath, $newContent) !== false) {
-            $fileContent = $newContent;
 
-            // JavaScript for SweetAlert is printed here
-            echo "
-                <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
-                <script>
-                    Swal.fire({
-                        title: 'Changes Saved',
-                        text: 'Your changes have been saved successfully.',
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonText: 'View File'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = 'view.php?file=" . urlencode($filePath) . "';
-                        }
-                    });
-                </script>
-            ";
+            $fileContent = $newContent;
+            header('Location: view.php?file=' . urlencode($filePath));
         } else {
             echo "<p>Failed to save the file.</p>";
         }
@@ -68,8 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/styles.css">
+    <script src="./helpers/controller.js"></script>
     <title>Edit File - <?php echo htmlspecialchars(basename($filePath)); ?></title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 
 <body>
