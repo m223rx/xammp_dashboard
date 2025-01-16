@@ -86,6 +86,15 @@ ul > li > a {
   font-weight: bolder;
 }
 
+ul > li > form {
+  width: 100%;
+}
+
+ul > li > form > button {
+  width: 100%;
+  border: none;
+}
+
 ul > li:not(:first-child):hover {
   border: 1px solid #fff;
   border-radius: 10px;
