@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../styles/styles.css">
-    <script src="./helpers/controller.js"></script>
+    <script src="../helpers/controller.js"></script>
 </head>
 
 <body>
