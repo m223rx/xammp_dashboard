@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($username === $valid_username && $password === $valid_password) {
         // Set session variable to indicate the user is logged in
         $_SESSION['logged_in'] = true;
-        header('Location: index.php'); // Redirect to index page
+        header('Location: ../index.php'); // Redirect to index page
         exit;
     } else {
         $error_message = 'Invalid username or password.';
@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script src="./helpers/controller.js"></script>
 </head>
 
 <body>
