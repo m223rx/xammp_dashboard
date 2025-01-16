@@ -47,7 +47,7 @@ function getIcon($path)
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $_SESSION['logged_in'] = true;
+    $_SESSION['logged_in'] = false;
 
 }
 
