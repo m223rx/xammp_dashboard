@@ -44,7 +44,7 @@ $serverStatus = file_exists('server_running.flag') ? 'Running' : 'Stopped';
                     </ul>
                 </aside>
             </div>
-            <iframe name="contentFrame" src="server.html"></iframe>
+            <iframe name="contentFrame" src="./helpers/server.php"></iframe>
         </div>
     </main>
 </body>
