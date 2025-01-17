@@ -347,6 +347,8 @@ main {
   transition: all ease 1s;
   font-weight: bolder;
   font-size: 1rem;
+  border: 1px solid #fff;
+  align-self: flex-end;
 }
 
 .loginFormContainer > form > button:hover {
