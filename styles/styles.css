@@ -338,6 +338,15 @@ main {
 
 .loginFormContainer > form > button {
   margin-top: 20px;
+  background-color: transparent;
+  padding: 7px 10px;
+  border-radius: 10px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all ease 1s;
+  font-weight: bolder;
+  font-size: 1rem;
 }
 
 .loginFormContainer > form > button:hover {
