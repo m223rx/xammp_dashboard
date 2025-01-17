@@ -8,6 +8,11 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
 ?>
 
+<?php
+$serverName = "Minecraft Server";
+$serverStatus = file_exists('server_running.flag') ? 'Running' : 'Stopped';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +29,17 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
     include('../../components/header.php');
     ?>
     <main>
-
+        <div>
+            <h2>Server Settings</h2>
+            <p><strong>Server Name:</strong> <?php echo $serverName; ?></p>
+            <p><strong>Status:</strong> <?php echo $serverStatus; ?></p>
+            <form action="start_server.php" method="post" style="display: inline;">
+                <button type="submit" class="button">Start Server</button>
+            </form>
+            <form action="stop_server.php" method="post" style="display: inline;">
+                <button type="submit" class="button stop">Stop Server</button>
+            </form>
+        </div>
     </main>
 </body>
 
