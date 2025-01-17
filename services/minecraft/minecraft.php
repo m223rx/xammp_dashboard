@@ -22,6 +22,8 @@ $serverStatus = file_exists('server_running.flag') ? 'Running' : 'Stopped';
     <title>Minecraft</title>
     <link rel="stylesheet" href="../../styles/styles.css">
     <script src="../../helpers/controller.js"></script>
+    <script src="https://kit.fontawesome.com/e1130e2a24.js" crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,16 +31,20 @@ $serverStatus = file_exists('server_running.flag') ? 'Running' : 'Stopped';
     include('../../components/header.php');
     ?>
     <main>
-        <div>
-            <h2>Server Settings</h2>
-            <p><strong>Server Name:</strong> <?php echo $serverName; ?></p>
-            <p><strong>Status:</strong> <?php echo $serverStatus; ?></p>
-            <form action="start_server.php" method="post" style="display: inline;">
-                <button type="submit" class="button">Start Server</button>
-            </form>
-            <form action="stop_server.php" method="post" style="display: inline;">
-                <button type="submit" class="button stop">Stop Server</button>
-            </form>
+        <div class="serverSettingsContainer">
+            <div class="asideContainer">
+                <aside>
+                    <h2>Menu</h2>
+                    <ul>
+                        <li>
+                            <a href="./helpers/server.php" target="contentFrame">Server</a>
+                        </li>
+                        <li><a href="page2.php" target="contentFrame">Console</a></li>
+                        <li><a href="page3.php" target="contentFrame">Log</a></li>
+                    </ul>
+                </aside>
+            </div>
+            <iframe name="contentFrame" src="server.html"></iframe>
         </div>
     </main>
 </body>
