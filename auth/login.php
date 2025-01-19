@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("./helpers/connect.php");
+// include("./helpers/connect.php");
 
 $hashPass = password_hash("mortadha2020", PASSWORD_DEFAULT);
 echo "" . $hashPass . "";
