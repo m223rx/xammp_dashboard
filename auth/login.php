@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("./helpers/connect.php");
+// include("./helpers/connect.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
