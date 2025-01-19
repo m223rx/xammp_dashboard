@@ -267,7 +267,7 @@ main {
   height: 100%;
 }
 
-.file-edit-container > form > textarea {
+.textarea {
   padding: 5px 5px;
   background-color: #000 !important;
   color: #fff !important;
