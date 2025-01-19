@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (isset($username, $password)) {
+    if (!empty($username) && !empty($password)) {
         $stmt = $conn->prepare("SELECT username, password FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h2>Login</h2>
             <?php
             if (isset($error_message)) {
-                echo "<p style='color: red;'>$error_message</p>";
+                echo "<div class='error-message'>$error_message</div>";
             }
             ?>
             <form action="login.php" method="POST">
