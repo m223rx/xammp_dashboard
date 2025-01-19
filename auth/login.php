@@ -2,12 +2,6 @@
 session_start();
 include("./helpers/connect.php");
 
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
-} else {
-    echo "Database connection successful!";
-}
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
