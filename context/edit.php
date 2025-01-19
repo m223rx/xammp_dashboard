@@ -69,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="post">
                 <textarea name="fileContent" rows="20"
                     cols="100"><?php echo htmlspecialchars($fileContent); ?></textarea>
-                <br>
                 <button type="submit">Save Changes</button>
             </form>
         </div>

@@ -269,8 +269,8 @@ main {
 
 .file-edit-container > form > textarea {
   padding: 5px 5px;
-  background-color: transparent;
-  color: #fff;
+  background-color: #000;
+  color: #000;
   font-size: 1rem;
   border: 1px solid #ffffff4b;
   outline: none;
