@@ -4,7 +4,7 @@ $base_url = 'http://192.168.1.102';
 
 <header>
     <div class="headerContainer">
-        <img src="<?php echo $base_url; ?>/resources/images/logo.png" alt="Logo" onclick="return redirect('#');">
+        <img src="<?php echo $base_url; ?>/resources/images/logo.png" alt="Logo" onclick="return redirect(<?php echo $base_url; ?>);">
         <div class="navItems">
             <nav>
                 <ul>
