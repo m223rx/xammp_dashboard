@@ -2,6 +2,9 @@
 session_start();
 include("./helpers/connect.php");
 
+$hashPass = password_hash("mortadha2020", PASSWORD_DEFAULT);
+echo "" . $hashPass . "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
