@@ -66,6 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="post">
                 <textarea name="fileContent" rows="20"
                     class="textarea"
+                    style="padding: 5px 5px;
+                            background-color: #000 !important;
+                            color: #fff !important;
+                            font-size: 1rem;
+                            border: 1px solid #ffffff4b;
+                            outline: none;"
                     cols="100"><?php echo htmlspecialchars($fileContent); ?></textarea>
                 <button type="submit">Save Changes</button>
             </form>
