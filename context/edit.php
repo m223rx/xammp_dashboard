@@ -54,9 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../styles/styles.css">
     <script src="./helpers/controller.js"></script>
     <title>Edit File - <?php echo htmlspecialchars(basename($filePath)); ?></title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2.min.css">
 </head>
 
 <body>
